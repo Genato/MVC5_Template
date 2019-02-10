@@ -1,0 +1,213 @@
+﻿body{
+    background-color: #f5f9fa;
+}
+
+footer{
+    position: absolute;
+    bottom: 5%;
+    width: 80%;
+}
+
+/** Form - "profile-form-right-border" **/
+.form-right-border-right-menu {
+    position: relative;
+    margin: 1%;
+    left: 1%;
+    float: left;
+    width: 30%;
+    padding-left: 1%;
+}
+
+.form-right-border-right-menu a {
+    margin-top: 9px;
+}
+
+.user-app-settings a:hover {
+    background-color: darkorange;
+    color: whitesmoke;
+}
+
+.profile-form-right-border {
+    position: relative;
+    width: 55%;
+    border-right: 1px solid #dcd3d3;
+    float: left;
+    margin: 0%;
+    right: -1%;
+    padding: 1%;
+}
+
+.profile-form-right-border div {
+    position: relative;
+}
+
+.profile-form-right-border label {
+    width: 27%;
+    float: left;
+    padding-top: 2%;
+}
+
+.profile-form-right-border input[type=text] {
+    width: 65%;
+}
+
+.profile-form-right-border input[type=submit] {
+    margin-left: 27%;
+}
+/** Form - "profile-form-right-borde" **/
+
+/** navbar - Exstensions  **/
+.top-navabar-extension {
+  background-color: #070f3d;
+}
+
+.custom-navbar-div{
+  position: relative;
+  float: left;
+  height: auto;
+}
+
+.custom-navbar-div span {
+  position: relative;
+  float: left;
+  padding-left: 35px;
+  padding-top: 11px;
+  font-weight: bold;
+  font-size: x-large;
+  font-family: Impact, Charcoal, sans-serif;
+}
+
+.custom-navbar-div a:hover{
+  color: whitesmoke; 
+  text-shadow: 2px 2px 20px #e5fcf3;
+  text-decoration: none;
+}
+
+/** navbar - Exstensions  **/
+
+/** DropdownMenu - navbar **/
+.house-icon {
+  font-size: 20px;
+}
+
+.dropdown-menu-extension {
+    display: none;
+    position: absolute;
+    background-color: #070f3d;
+    border: 1px solid #303d87;
+    color: whitesmoke;
+    top: 50px;
+    border-radius: 2px;
+}
+
+.dropdown-menu-extension-home {
+    left: -1px;
+    min-width: 105px;
+}
+
+.navbar-right .dropdown-menu-extension-user {
+    left: 10px;
+    min-width: 40px;
+}
+
+.navbar-right .dropdown-menu-extension-user li a {
+    padding: 5%;
+}
+
+.dropdown-menu-extension li a {
+    position: relative;
+    color: whitesmoke;
+    padding: 8%;
+    font-size: 12px;
+}
+
+.dropdown-menu-extension li a:hover {
+    background-color: #69b1f7;
+    border-radius: 2px;
+    transform: scaleX(1.05);
+    transition: 0.3s;
+}
+
+.dropdown-extension:hover .dropdown-menu-extension {
+    display: block;
+}
+
+.house-icon:hover {
+    text-shadow: 2px 2px 10px #e5fcf3;
+}
+/** DropdownMenu - navbar **/
+
+/*** NotificationBar ***/
+#notification {
+    background-color: rgba(92, 184, 92, 0.82);
+    color: #000000;
+    margin-bottom: 0px;
+    display: none;
+    width: 100%;
+    border: 0px;
+    text-align: center;
+}
+
+#notification span {
+    position: relative;
+    top: 50%;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+}
+
+#notification button {
+    font-size: 30px; 
+}
+/*** NotificationBar ***/
+
+/*** Admin settings ***/
+.admin-settings a {
+    float: none;
+}
+
+.admin-settings a:hover {
+    background-color: #69b1f7;
+    color: whitesmoke;
+}
+
+.manage-roles-div-table{
+    width: 40%;
+}
+
+.manage-roles-div-table div {
+    position: relative;
+    float: left;
+    padding: 7px;
+    margin: 5px;
+    font-size: inherit;
+}
+
+.manage-roles-div-table .div-column {
+    border-left-style: solid;
+    border-left-width: 2px;
+}
+
+.manage-roles-div-table .div-column:hover {
+    background-color: #1acef6;
+    border-radius: 10px;
+}
+
+.manage-roles-div-table a:hover{
+    color: black;
+    text-decoration: none;
+}
+
+.manage-roles-div-table .div-first-column {
+    clear: left;
+    width: 30%;
+    font-weight: bold;
+}
+
+.manage-roles-div-table hr{
+    position: relative;
+    clear: both;
+    margin-top: 5px;
+}
+
+/*** Admin settings ***/

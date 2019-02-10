@@ -1,0 +1,49 @@
+﻿@using MVC5_Template.Localization
+@model MVC5_Template.ViewModels.AccountViewModels.UserAppSettingsViewModel
+
+<h2>@Labels.UserApplicationSettings</h2>
+<hr />
+
+@using (Html.BeginForm("UserAppSettings", "Account", FormMethod.Post, new { @class = "form-horizontal profile-form-right-border", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Localization)
+        <div>
+            @Html.DropDownListFor(m => m.SelectedLocale, new SelectList(Model.Localization, "ID", "_Localization", Model.SelectedLocale), new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Tema")
+        <div>
+
+            <!--DUMMY DROPDOWNLIST-->
+            @{var listItems = new List<SelectListItem>
+                                            {
+                                                  new SelectListItem { Text = "Klasična tema", Value="Klasična tema" },
+                                                  new SelectListItem { Text = "Tamna tema", Value="Tamna tema" }
+                                            };
+            }
+
+            @Html.DropDownList("ThemeList", new SelectList(listItems, "Value", "Text", listItems[0].Text), new { @class = "form-control" })
+            <!--DUMMY DROPDOWNLIST-->
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div>
+            <input type="submit" class="btn btn-success" value=@Labels.SaveButtonLabel />
+        </div>
+    </div>
+}
+
+
+<div class="form-right-border-right-menu">
+    <div class="list-group admin-settings">
+        @Html.ActionLink(Labels.IdentityProfileSettings, "IdentityProfileSettings", "Account", null, htmlAttributes: new { @class = "list-group-item list-group-item-action" })
+    </div>
+</div>

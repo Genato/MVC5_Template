@@ -1,0 +1,89 @@
+﻿@using MVC5_Template.Localization
+
+@model MVC5_Template.ViewModels.AdminViewModels.ManageUserRolesViewModel
+
+<h2>@Labels.ManageUserRoles</h2>
+<hr />
+
+
+<!--Add user to Role-->
+@using (Ajax.BeginForm("AddUserToRole"
+                        , routeValues: null
+                        , htmlAttributes: new { @class = "form-horizontal profile-form-right-border" }
+                        , ajaxOptions: new AjaxOptions
+                        {
+                            HttpMethod = "POST"
+                                                        ,
+                            OnSuccess = "AddCookieForNotificationBar('lightgreen', data); refreshPartialView_UsersInRole('list-of-users-for-role', '" + Model.RoleID + "');"
+                            ,
+                            OnFailure = "AddCookieForNotificationBar('orangered', data);"
+
+                        }))
+{
+    <h3 class="form-group">@Labels.AddUserToRole</h3>
+
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.UserName)
+        <div>
+            @Html.TextBoxFor(m => m.UserName, htmlAttributes: new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.RoleName)
+        <div>
+            @Html.TextBoxFor(m => m.RoleName, htmlAttributes: new { @class = "form-control", @placeholder = Model.RoleName })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div>
+            <input type="submit" value=@Labels.SaveButtonLabel class="btn btn-success" />
+        </div>
+    </div>
+}
+
+<!--List users in role-->
+    <div id="list-of-users-for-role" class="form-right-border-right-menu">
+        @Html.Partial("~/Views/Admin/PartialViews/ListOfUsersForRole.cshtml", Model.ListOfUser)
+    </div>
+
+<!--Remove user to Role-->
+@using (Ajax.BeginForm("RemoveUserFromRole"
+                        , routeValues: null
+                        , htmlAttributes: new { @class = "form-horizontal profile-form-right-border" }
+                        , ajaxOptions: new AjaxOptions
+                        {
+                            HttpMethod = "POST"
+                                                        ,
+                            OnSuccess = "AddCookieForNotificationBar('lightgreen', data); refreshPartialView_UsersInRole('list-of-users-for-role', '" +Model.RoleID+ "');"
+                            ,
+                            OnFailure = "AddCookieForNotificationBar('orangered', data);"
+                        }))
+{
+    <h3 class="form-group">@Labels.RemoveUserFromRole</h3>
+
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.UserName)
+        <div>
+            @Html.TextBoxFor(m => m.UserName, htmlAttributes: new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.RoleName)
+        <div>
+            @Html.TextBoxFor(m => m.RoleName, htmlAttributes: new { @class = "form-control", @placeholder = Model.RoleName })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div>
+            <input type="submit" value=@Labels.SaveButtonLabel class="btn btn-success" />
+        </div>
+    </div>
+}
+
+

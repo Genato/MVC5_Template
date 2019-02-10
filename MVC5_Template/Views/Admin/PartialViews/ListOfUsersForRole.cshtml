@@ -1,0 +1,17 @@
+﻿@using MVC5_Template.Models.IdentityModels
+@using MVC5_Template.Localization
+
+@model List<OntoIdentityUser>
+
+
+<h3>@Labels.ListOfUsers</h3>
+
+@foreach (var item in Model)
+{
+    <ul>
+        <li>
+            @item.UserName
+        </li>
+    </ul>
+}
+

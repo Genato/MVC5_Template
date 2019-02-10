@@ -1,0 +1,90 @@
+﻿@using Microsoft.AspNet.Identity
+@using MVC5_Template.Localization
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div id="notification" class="alert alert-success">
+        <span id="notification_text"></span>
+        <button class="close">&times;</button>
+    </div>
+
+    <div class="navbar navbar-inverse navbar-fixed-top top-navabar-extension">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="dropdown dropdown-extension">
+            @Html.ActionLink(HttpUtility.HtmlDecode("&#127962;"), "Index", "Home", new { area = "" }, htmlAttributes: new { @data_toggle = "dropdown", @class = "navbar-brand btn dropdown-toggle house-icon" })
+            <ul class="dropdown-menu dropdown-menu-extension dropdown-menu-extension-home">
+              <li>@Html.ActionLink(Labels.Home, "Index", "Home")</li>
+              <li>@Html.ActionLink(Labels.About, "About", "Home")</li>
+              <li>@Html.ActionLink(Labels.Contact, "Contact", "Home")</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="navbar-collapse collapse">
+
+          @if (Request.IsAuthenticated)
+          {
+            using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+            {
+              @Html.AntiForgeryToken()
+
+              <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown dropdown-extension">
+                  @Html.ActionLink(Labels.Hello + " " + User.Identity.Name + "!", "Profile", "Account", routeValues: null, htmlAttributes: new { @data_toggle = "dropdown", title = "Manage" })
+                  <ul class="dropdown-menu dropdown-menu-extension dropdown-menu-extension-user">
+                    <li>@Html.ActionLink(Labels.UserApplicationSettings, "UserAppSettings", "Account")</li>
+
+                    @if (User.IsInRole("Admin"))
+                    {
+                      <li>@Html.ActionLink(Labels.AdminSettings, "AdminSettings", "Admin")</li>
+                    }
+
+                  </ul>
+                </li>
+                <li><a href="javascript:document.getElementById('logoutForm').submit()">@Labels.LogOff</a></li>
+              </ul>
+            }
+          }
+          else
+          {
+            <ul class="nav navbar-nav navbar-right">
+              <li>@Html.ActionLink(Labels.LogIn, "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+            </ul>
+          }
+
+        </div>
+      </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <footer>
+            <hr />
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryAjax")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <script src="~/Content/scripts/jquery.signalR-2.2.2.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script src="~/Content/scripts/CustomScripts/SignalR_Client.js"></script>
+</body>
+</html>
